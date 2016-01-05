@@ -74,6 +74,7 @@ function selectColor() {
  */
 
 function debug(namespace, isDynamic) {
+  exports.namespaces.push(namespace);
   // Return a non dynamic debug instance.
   if (!isDynamic) {
     // define the `disabled` version
@@ -133,7 +134,6 @@ function debug(namespace, isDynamic) {
     var fn = exports.enabled(namespace) ? enabled : disabled;
 
     fn.namespace = namespace;
-    exports.namespaces.push(namespace);
 
     // Fake release() method.
     fn.release = function() {};
