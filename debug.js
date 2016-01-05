@@ -17,6 +17,7 @@ exports.humanize = require('ms');
  * The currently active debug mode names, and names to skip.
  */
 
+exports.namespaces = [];
 exports.names = [];
 exports.skips = [];
 
@@ -132,6 +133,7 @@ function debug(namespace, isDynamic) {
     var fn = exports.enabled(namespace) ? enabled : disabled;
 
     fn.namespace = namespace;
+    exports.namespaces.push(namespace);
 
     // Fake release() method.
     fn.release = function() {};
